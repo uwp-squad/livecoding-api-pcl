@@ -64,7 +64,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="userSlug">Username slug</param>
         /// <returns></returns>
-        Task<LiveStream> GetCurrentLivestreamOfUser(string userSlug);
+        Task<LiveStream> GetCurrentLivestreamOfUserAsync(string userSlug);
 
         #endregion
 
@@ -122,6 +122,17 @@ namespace LivecodingApi.Services
         /// <param name="slug">Slug of the video</param>
         /// <returns></returns>
         Task<Video> GetVideoBySlugAsync(string videoSlug);
+
+        #endregion
+
+        #region User
+
+        /// <summary>
+        /// Returns current user info
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_User_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<User> GetCurrentUserAsync();
 
         #endregion
     }
@@ -195,7 +206,7 @@ namespace LivecodingApi.Services
             return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
         }
 
-        public async Task<LiveStream> GetCurrentLivestreamOfUser(string userSlug)
+        public async Task<LiveStream> GetCurrentLivestreamOfUserAsync(string userSlug)
         {
             string url = _baseApiAddress + $"livestreams/{userSlug}";
             return await HttpClient.GetAsync<LiveStream>(url);
@@ -247,6 +258,16 @@ namespace LivecodingApi.Services
         {
             string url = _baseApiAddress + $"videos/{videoSlug}";
             return await HttpClient.GetAsync<Video>(url);
+        }
+
+        #endregion
+
+        #region User
+
+        public async Task<User> GetCurrentUserAsync()
+        {
+            string url = _baseApiAddress + "user";
+            return await HttpClient.GetAsync<User>(url);
         }
 
         #endregion

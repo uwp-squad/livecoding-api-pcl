@@ -75,8 +75,9 @@ namespace LivecodingApi.Services
         /// Returns all languages used in the site (human languages)
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Site_Languages_list)
         /// </summary>
+        /// <param name="search">Search languages (based on field 'name')</param>
         /// <returns></returns>
-        Task<PaginationResult<SiteLanguage>> GetLanguagesAsync();
+        Task<PaginationResult<SiteLanguage>> GetLanguagesAsync(string search = null);
 
         /// <summary>
         /// Returns a language by its ISO code
@@ -223,9 +224,15 @@ namespace LivecodingApi.Services
 
         #region Languages
 
-        public async Task<PaginationResult<SiteLanguage>> GetLanguagesAsync()
+        public async Task<PaginationResult<SiteLanguage>> GetLanguagesAsync(string search = null)
         {
             string url = _baseApiAddress + "languages/";
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                url += $"?search={search}";
+            }
+
             return await HttpClient.GetAsync<PaginationResult<SiteLanguage>>(url);
         }
 

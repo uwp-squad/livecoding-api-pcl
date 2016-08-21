@@ -29,8 +29,9 @@ namespace LivecodingApi.Services
         /// Returns all coding categories
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Coding_Categories_list)
         /// </summary>
+        /// <param name="search">Search coding categories (based on fields 'name', 'slug' or 'sort')</param>
         /// <returns></returns>
-        Task<PaginationResult<CodingCategory>> GetCodingCategoriesAsync();
+        Task<PaginationResult<CodingCategory>> GetCodingCategoriesAsync(string search = null);
 
         /// <summary>
         /// Returns a coding category based on his name
@@ -178,15 +179,21 @@ namespace LivecodingApi.Services
 
         #region Coding Categories
 
-        public async Task<PaginationResult<CodingCategory>> GetCodingCategoriesAsync()
+        public async Task<PaginationResult<CodingCategory>> GetCodingCategoriesAsync(string search = null)
         {
-            string url = _baseApiAddress + "codingcategories";
+            string url = _baseApiAddress + "codingcategories/";
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                url += $"?search={search}";
+            }
+
             return await HttpClient.GetAsync<PaginationResult<CodingCategory>>(url);
         }
 
         public async Task<CodingCategory> GetCodingCategoryByNameAsync(string name)
         {
-            string url = _baseApiAddress + $"codingcategories/{name}";
+            string url = _baseApiAddress + $"codingcategories/{name}/";
             return await HttpClient.GetAsync<CodingCategory>(url);
         }
 
@@ -196,19 +203,19 @@ namespace LivecodingApi.Services
 
         public async Task<PaginationResult<LiveStream>> GetLiveStreamsAsync()
         {
-            string url = _baseApiAddress + "livestreams";
+            string url = _baseApiAddress + "livestreams/";
             return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
         }
 
         public async Task<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync()
         {
-            string url = _baseApiAddress + "livestreams/onair";
+            string url = _baseApiAddress + "livestreams/onair/";
             return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
         }
 
         public async Task<LiveStream> GetCurrentLivestreamOfUserAsync(string userSlug)
         {
-            string url = _baseApiAddress + $"livestreams/{userSlug}";
+            string url = _baseApiAddress + $"livestreams/{userSlug}/";
             return await HttpClient.GetAsync<LiveStream>(url);
         }
 
@@ -218,13 +225,13 @@ namespace LivecodingApi.Services
 
         public async Task<PaginationResult<SiteLanguage>> GetLanguagesAsync()
         {
-            string url = _baseApiAddress + "languages";
+            string url = _baseApiAddress + "languages/";
             return await HttpClient.GetAsync<PaginationResult<SiteLanguage>>(url);
         }
 
         public async Task<SiteLanguage> GetLanguageByIsoCodeAsync(string iso)
         {
-            string url = _baseApiAddress + $"languages/{iso}";
+            string url = _baseApiAddress + $"languages/{iso}/";
             return await HttpClient.GetAsync<SiteLanguage>(url);
         }
 
@@ -234,13 +241,13 @@ namespace LivecodingApi.Services
 
         public async Task<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync()
         {
-            string url = _baseApiAddress + "scheduledbroadcast";
+            string url = _baseApiAddress + "scheduledbroadcast/";
             return await HttpClient.GetAsync<PaginationResult<ScheduledBroadcast>>(url);
         }
 
         public async Task<ScheduledBroadcast> GetScheduledBroadcastByIdAsync(string id)
         {
-            string url = _baseApiAddress + $"scheduledbroadcast/{id}";
+            string url = _baseApiAddress + $"scheduledbroadcast/{id}/";
             return await HttpClient.GetAsync<ScheduledBroadcast>(url);
         }
 
@@ -250,13 +257,13 @@ namespace LivecodingApi.Services
 
         public async Task<PaginationResult<Video>> GetVideosAsync()
         {
-            string url = _baseApiAddress + "videos";
+            string url = _baseApiAddress + "videos/";
             return await HttpClient.GetAsync<PaginationResult<Video>>(url);
         }
 
         public async Task<Video> GetVideoBySlugAsync(string videoSlug)
         {
-            string url = _baseApiAddress + $"videos/{videoSlug}";
+            string url = _baseApiAddress + $"videos/{videoSlug}/";
             return await HttpClient.GetAsync<Video>(url);
         }
 
@@ -266,7 +273,7 @@ namespace LivecodingApi.Services
 
         public async Task<User> GetCurrentUserAsync()
         {
-            string url = _baseApiAddress + "user";
+            string url = _baseApiAddress + "user/";
             return await HttpClient.GetAsync<User>(url);
         }
 

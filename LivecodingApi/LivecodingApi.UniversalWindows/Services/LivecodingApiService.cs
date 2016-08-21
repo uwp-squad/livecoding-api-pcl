@@ -52,7 +52,7 @@ namespace LivecodingApi.Services
         Task<PaginationResult<LiveStream>> GetLiveStreamsAsync();
 
         /// <summary>
-        /// Returns all lviestreams currently on air
+        /// Returns all livestreams currently on air
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_onair)
         /// </summary>
         /// <returns></returns>
@@ -65,6 +65,25 @@ namespace LivecodingApi.Services
         /// <param name="userSlug">Username slug</param>
         /// <returns></returns>
         Task<LiveStream> GetCurrentLivestreamOfUser(string userSlug);
+
+        #endregion
+
+        #region Languages
+
+        /// <summary>
+        /// Returns all languages used in the site (human languages)
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Site_Languages_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<SiteLanguage>> GetLanguagesAsync();
+
+        /// <summary>
+        /// Returns a language by its ISO code
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Site_Languages_retrieve)
+        /// </summary>
+        /// <param name="iso">Iso code (ex: "fr")</param>
+        /// <returns></returns>
+        Task<SiteLanguage> GetLanguageByIsoCodeAsync(string iso);
 
         #endregion
     }
@@ -142,6 +161,22 @@ namespace LivecodingApi.Services
         {
             string url = _baseApiAddress + $"livestreams/{userSlug}";
             return await HttpClient.GetAsync<LiveStream>(url);
+        }
+
+        #endregion
+
+        #region Languages
+
+        public async Task<PaginationResult<SiteLanguage>> GetLanguagesAsync()
+        {
+            string url = _baseApiAddress + "languages";
+            return await HttpClient.GetAsync<PaginationResult<SiteLanguage>>(url);
+        }
+
+        public async Task<SiteLanguage> GetLanguageByIsoCodeAsync(string iso)
+        {
+            string url = _baseApiAddress + $"languages/{iso}";
+            return await HttpClient.GetAsync<SiteLanguage>(url);
         }
 
         #endregion

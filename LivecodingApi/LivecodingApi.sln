@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front", "Front", "{3899CDCD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivecodingApi.UniversalWindows", "LivecodingApi.UniversalWindows\LivecodingApi.UniversalWindows.csproj", "{2B0FB1B1-D320-4CA2-B2D9-1EEF91D793FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivecodingApi.Services", "LivecodingApi.Services\LivecodingApi.Services.csproj", "{2BCE06BA-609C-49E3-9807-6D83A4F684BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{2B0FB1B1-D320-4CA2-B2D9-1EEF91D793FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B0FB1B1-D320-4CA2-B2D9-1EEF91D793FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B0FB1B1-D320-4CA2-B2D9-1EEF91D793FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BCE06BA-609C-49E3-9807-6D83A4F684BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BCE06BA-609C-49E3-9807-6D83A4F684BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BCE06BA-609C-49E3-9807-6D83A4F684BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BCE06BA-609C-49E3-9807-6D83A4F684BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 		{515C5733-80A0-4C4D-9844-5A825E54EF89} = {666D3CDE-1002-465B-A1C1-D13AEFEF31A0}
 		{AB95728C-F04B-412D-A78B-903B4169410C} = {666D3CDE-1002-465B-A1C1-D13AEFEF31A0}
 		{2B0FB1B1-D320-4CA2-B2D9-1EEF91D793FB} = {3899CDCD-78C7-47FC-B990-ABA17A5A2394}
+		{2BCE06BA-609C-49E3-9807-6D83A4F684BC} = {666D3CDE-1002-465B-A1C1-D13AEFEF31A0}
 	EndGlobalSection
 EndGlobal

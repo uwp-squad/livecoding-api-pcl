@@ -97,12 +97,31 @@ namespace LivecodingApi.Services
         Task<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync();
 
         /// <summary>
-        /// Returns a schedueld broadcast by its id
+        /// Returns a scheduled broadcast by its id
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Scheduled_Broadcast_retrieve)
         /// </summary>
         /// <param name="id">Id of the scheduled broadcast</param>
         /// <returns></returns>
         Task<ScheduledBroadcast> GetScheduledBroadcastByIdAsync(string id);
+
+        #endregion
+
+        #region Videos
+
+        /// <summary>
+        /// Returns all videos
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Video_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<Video>> GetVideosAsync();
+
+        /// <summary>
+        /// Returns a video by its slug
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Video_retrieve)
+        /// </summary>
+        /// <param name="slug">Slug of the video</param>
+        /// <returns></returns>
+        Task<Video> GetVideoBySlugAsync(string videoSlug);
 
         #endregion
     }
@@ -212,6 +231,22 @@ namespace LivecodingApi.Services
         {
             string url = _baseApiAddress + $"scheduledbroadcast/{id}";
             return await HttpClient.GetAsync<ScheduledBroadcast>(url);
+        }
+
+        #endregion
+
+        #region Videos
+
+        public async Task<PaginationResult<Video>> GetVideosAsync()
+        {
+            string url = _baseApiAddress + "videos";
+            return await HttpClient.GetAsync<PaginationResult<Video>>(url);
+        }
+
+        public async Task<Video> GetVideoBySlugAsync(string videoSlug)
+        {
+            string url = _baseApiAddress + $"videos/{videoSlug}";
+            return await HttpClient.GetAsync<Video>(url);
         }
 
         #endregion

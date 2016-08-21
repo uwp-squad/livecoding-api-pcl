@@ -41,6 +41,32 @@ namespace LivecodingApi.Services
         Task<CodingCategory> GetCodingCategoryByNameAsync(string name);
 
         #endregion
+
+        #region Livestreams
+
+        /// <summary>
+        /// Returns all livestreams
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<LiveStream>> GetLiveStreamsAsync();
+
+        /// <summary>
+        /// Returns all lviestreams currently on air
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_onair)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync();
+
+        /// <summary>
+        /// Returns livestream of a user
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_retrieve)
+        /// </summary>
+        /// <param name="userSlug">Username slug</param>
+        /// <returns></returns>
+        Task<LiveStream> GetCurrentLivestreamOfUser(string userSlug);
+
+        #endregion
     }
 
     public class LivecodingApiService : ILivecodingApiService
@@ -94,6 +120,28 @@ namespace LivecodingApi.Services
         {
             string url = _baseApiAddress + $"codingcategories/{name}";
             return await HttpClient.GetAsync<CodingCategory>(url);
+        }
+
+        #endregion
+
+        #region Livestreams
+
+        public async Task<PaginationResult<LiveStream>> GetLiveStreamsAsync()
+        {
+            string url = _baseApiAddress + "livestreams";
+            return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
+        }
+
+        public async Task<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync()
+        {
+            string url = _baseApiAddress + "livestreams/onair";
+            return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
+        }
+
+        public async Task<LiveStream> GetCurrentLivestreamOfUser(string userSlug)
+        {
+            string url = _baseApiAddress + $"livestreams/{userSlug}";
+            return await HttpClient.GetAsync<LiveStream>(url);
         }
 
         #endregion

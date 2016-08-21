@@ -49,8 +49,9 @@ namespace LivecodingApi.Services
         /// Returns all livestreams
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_list)
         /// </summary>
+        /// <param name="search">Search livestreams (based on fields 'title', 'description' or 'tags')</param>
         /// <returns></returns>
-        Task<PaginationResult<LiveStream>> GetLiveStreamsAsync();
+        Task<PaginationResult<LiveStream>> GetLiveStreamsAsync(string search = null);
 
         /// <summary>
         /// Returns all livestreams currently on air
@@ -202,9 +203,15 @@ namespace LivecodingApi.Services
 
         #region Livestreams
 
-        public async Task<PaginationResult<LiveStream>> GetLiveStreamsAsync()
+        public async Task<PaginationResult<LiveStream>> GetLiveStreamsAsync(string search = null)
         {
             string url = _baseApiAddress + "livestreams/";
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                url += $"?search={search}";
+            }
+
             return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
         }
 

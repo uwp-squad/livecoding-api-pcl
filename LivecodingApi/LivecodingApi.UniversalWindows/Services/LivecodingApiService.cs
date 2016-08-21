@@ -86,6 +86,25 @@ namespace LivecodingApi.Services
         Task<SiteLanguage> GetLanguageByIsoCodeAsync(string iso);
 
         #endregion
+
+        #region Scheduled Broadcast
+
+        /// <summary>
+        /// Returns all scheduled broadcasts
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Scheduled_Broadcast_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync();
+
+        /// <summary>
+        /// Returns a schedueld broadcast by its id
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Scheduled_Broadcast_retrieve)
+        /// </summary>
+        /// <param name="id">Id of the scheduled broadcast</param>
+        /// <returns></returns>
+        Task<ScheduledBroadcast> GetScheduledBroadcastByIdAsync(string id);
+
+        #endregion
     }
 
     public class LivecodingApiService : ILivecodingApiService
@@ -177,6 +196,22 @@ namespace LivecodingApi.Services
         {
             string url = _baseApiAddress + $"languages/{iso}";
             return await HttpClient.GetAsync<SiteLanguage>(url);
+        }
+
+        #endregion
+
+        #region Scheduled Broadcast
+
+        public async Task<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync()
+        {
+            string url = _baseApiAddress + "scheduledbroadcast";
+            return await HttpClient.GetAsync<PaginationResult<ScheduledBroadcast>>(url);
+        }
+
+        public async Task<ScheduledBroadcast> GetScheduledBroadcastByIdAsync(string id)
+        {
+            string url = _baseApiAddress + $"scheduledbroadcast/{id}";
+            return await HttpClient.GetAsync<ScheduledBroadcast>(url);
         }
 
         #endregion

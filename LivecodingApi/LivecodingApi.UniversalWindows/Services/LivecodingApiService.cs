@@ -6,9 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+#if __IOS__ || __ANDROID__ || NET45
+using System.Net.Http;
+using System.Net.Http.Headers;
+#endif
+#if NETFX_CORE
 using Windows.Web.Http;
 using Windows.Web.Http.Headers;
 using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
+#endif
 
 namespace LivecodingApi.Services
 {
@@ -24,9 +30,16 @@ namespace LivecodingApi.Services
             {
                 var httpClient = new HttpClient();
 
+#if __IOS__ || __ANDROID__ || NET45
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!string.IsNullOrWhiteSpace(Token))
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+#endif
+#if NETFX_CORE
                 httpClient.DefaultRequestHeaders.Accept.Add(new HttpMediaTypeWithQualityHeaderValue("application/json"));
                 if (!string.IsNullOrWhiteSpace(Token))
                     httpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", Token);
+#endif
 
                 return httpClient;
             }

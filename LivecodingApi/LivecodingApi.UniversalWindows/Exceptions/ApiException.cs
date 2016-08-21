@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#if __IOS__ || __ANDROID__ || NET45
+using System.Net;
+#endif
+#if NETFX_CORE
 using Windows.Web.Http;
+#endif
 
 namespace LivecodingApi.Exceptions
 {

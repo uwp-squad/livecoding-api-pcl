@@ -182,10 +182,10 @@ namespace LivecodingApi.Services
 
         #region User
 
-        public IObservable<User> GetCurrentUserAsync()
+        public IObservable<UserPrivate> GetCurrentUserAsync()
         {
             string url = _baseApiAddress + "user/";
-            return HttpClient.GetAsync<User>(url)
+            return HttpClient.GetAsync<UserPrivate>(url)
                 .ToObservable();
         }
 

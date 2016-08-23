@@ -131,7 +131,7 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_User_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<User> GetCurrentUserAsync();
+        IObservable<UserPrivate> GetCurrentUserAsync();
 
         #endregion
     }

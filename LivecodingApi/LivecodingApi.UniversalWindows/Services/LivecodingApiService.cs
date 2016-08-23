@@ -170,10 +170,10 @@ namespace LivecodingApi.Services
 
         #region User
 
-        public async Task<User> GetCurrentUserAsync()
+        public async Task<UserPrivate> GetCurrentUserAsync()
         {
             string url = _baseApiAddress + "user/";
-            return await HttpClient.GetAsync<User>(url);
+            return await HttpClient.GetAsync<UserPrivate>(url);
         }
 
         #endregion

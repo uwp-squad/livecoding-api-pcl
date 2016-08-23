@@ -8,6 +8,10 @@ using Windows.Web.Http;
 
 namespace LivecodingApi.Exceptions
 {
+    /// <summary>
+    /// Api Exception designed using octokit.net example
+    /// https://github.com/octokit/octokit.net/blob/1266ac0f3a366f033061d0c1cc0785bc3c9f5bd3/Octokit/Exceptions/ApiException.cs
+    /// </summary>
     public class ApiException : Exception
     {
         #region Properties

@@ -67,7 +67,7 @@ namespace LivecodingApi.Services
 
         #region Coding Categories
 
-        public IObservable<PaginationResult<CodingCategory>> GetCodingCategoriesAsync(string search = null)
+        public IObservable<PaginationResult<CodingCategory>> GetCodingCategories(string search = null)
         {
             string url = _baseApiAddress + "codingcategories/";
 
@@ -80,7 +80,7 @@ namespace LivecodingApi.Services
                 .ToObservable();
         }
 
-        public IObservable<CodingCategory> GetCodingCategoryByNameAsync(string name)
+        public IObservable<CodingCategory> GetCodingCategoryByName(string name)
         {
             string url = _baseApiAddress + $"codingcategories/{name}/";
             return HttpClient.GetAsync<CodingCategory>(url)
@@ -91,7 +91,7 @@ namespace LivecodingApi.Services
 
         #region Livestreams
 
-        public IObservable<PaginationResult<LiveStream>> GetLiveStreamsAsync(string search = null)
+        public IObservable<PaginationResult<LiveStream>> GetLiveStreams(string search = null)
         {
             string url = _baseApiAddress + "livestreams/";
 
@@ -104,14 +104,14 @@ namespace LivecodingApi.Services
                 .ToObservable();
         }
 
-        public IObservable<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync()
+        public IObservable<PaginationResult<LiveStream>> GetLiveStreamsOnAir()
         {
             string url = _baseApiAddress + "livestreams/onair/";
             return HttpClient.GetAsync<PaginationResult<LiveStream>>(url)
                 .ToObservable();
         }
 
-        public IObservable<LiveStream> GetCurrentLivestreamOfUserAsync(string userSlug)
+        public IObservable<LiveStream> GetCurrentLivestreamOfUser(string userSlug)
         {
             string url = _baseApiAddress + $"livestreams/{userSlug}/";
             return HttpClient.GetAsync<LiveStream>(url)
@@ -122,7 +122,7 @@ namespace LivecodingApi.Services
 
         #region Languages
 
-        public IObservable<PaginationResult<SiteLanguage>> GetLanguagesAsync(string search = null)
+        public IObservable<PaginationResult<SiteLanguage>> GetLanguages(string search = null)
         {
             string url = _baseApiAddress + "languages/";
 
@@ -135,7 +135,7 @@ namespace LivecodingApi.Services
                 .ToObservable();
         }
 
-        public IObservable<SiteLanguage> GetLanguageByIsoCodeAsync(string iso)
+        public IObservable<SiteLanguage> GetLanguageByIsoCode(string iso)
         {
             string url = _baseApiAddress + $"languages/{iso}/";
             return HttpClient.GetAsync<SiteLanguage>(url)
@@ -146,14 +146,14 @@ namespace LivecodingApi.Services
 
         #region Scheduled Broadcast
 
-        public IObservable<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync()
+        public IObservable<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcasts()
         {
             string url = _baseApiAddress + "scheduledbroadcast/";
             return HttpClient.GetAsync<PaginationResult<ScheduledBroadcast>>(url)
                 .ToObservable();
         }
 
-        public IObservable<ScheduledBroadcast> GetScheduledBroadcastByIdAsync(string id)
+        public IObservable<ScheduledBroadcast> GetScheduledBroadcastById(string id)
         {
             string url = _baseApiAddress + $"scheduledbroadcast/{id}/";
             return HttpClient.GetAsync<ScheduledBroadcast>(url)
@@ -164,14 +164,14 @@ namespace LivecodingApi.Services
 
         #region Videos
 
-        public IObservable<PaginationResult<Video>> GetVideosAsync()
+        public IObservable<PaginationResult<Video>> GetVideos()
         {
             string url = _baseApiAddress + "videos/";
             return HttpClient.GetAsync<PaginationResult<Video>>(url)
                 .ToObservable();
         }
 
-        public IObservable<Video> GetVideoBySlugAsync(string videoSlug)
+        public IObservable<Video> GetVideoBySlug(string videoSlug)
         {
             string url = _baseApiAddress + $"videos/{videoSlug}/";
             return HttpClient.GetAsync<Video>(url)
@@ -182,10 +182,59 @@ namespace LivecodingApi.Services
 
         #region User
 
-        public IObservable<UserPrivate> GetCurrentUserAsync()
+        public IObservable<UserPrivate> GetCurrentUser()
         {
             string url = _baseApiAddress + "user/";
             return HttpClient.GetAsync<UserPrivate>(url)
+                .ToObservable();
+        }
+
+        public IObservable<IEnumerable<User>> GetFollowers()
+        {
+            string url = _baseApiAddress + "user/followers/";
+            return HttpClient.GetAsync<IEnumerable<User>>(url)
+                .ToObservable();
+        }
+
+        public IObservable<IEnumerable<User>> GetFollows()
+        {
+            string url = _baseApiAddress + "user/follows/";
+            return HttpClient.GetAsync<IEnumerable<User>>(url)
+                .ToObservable();
+        }
+
+        public IObservable<XmppAccount> GetXmppAccount()
+        {
+            string url = _baseApiAddress + "user/chat/account/";
+            return HttpClient.GetAsync<XmppAccount>(url)
+                .ToObservable();
+        }
+
+        public IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreams()
+        {
+            string url = _baseApiAddress + "user/livestreams/";
+            return HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url)
+                .ToObservable();
+        }
+
+        public IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAir()
+        {
+            string url = _baseApiAddress + "user/livestreams/onair/";
+            return HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url)
+                .ToObservable();
+        }
+
+        public IObservable<PaginationResult<Video>> GetUserVideos()
+        {
+            string url = _baseApiAddress + "user/videos/";
+            return HttpClient.GetAsync<PaginationResult<Video>>(url)
+                .ToObservable();
+        }
+
+        public IObservable<IEnumerable<Video>> GetUserLatestVideos()
+        {
+            string url = _baseApiAddress + "user/videos/latest/";
+            return HttpClient.GetAsync<IEnumerable<Video>>(url)
                 .ToObservable();
         }
 

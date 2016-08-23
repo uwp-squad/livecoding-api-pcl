@@ -176,6 +176,48 @@ namespace LivecodingApi.Services
             return await HttpClient.GetAsync<UserPrivate>(url);
         }
 
+        public async Task<IEnumerable<User>> GetFollowersAsync()
+        {
+            string url = _baseApiAddress + "user/followers/";
+            return await HttpClient.GetAsync<IEnumerable<User>>(url);
+        }
+
+        public async Task<IEnumerable<User>> GetFollowsAsync()
+        {
+            string url = _baseApiAddress + "user/follows/";
+            return await HttpClient.GetAsync<IEnumerable<User>>(url);
+        }
+
+        public async Task<XmppAccount> GetXmppAccountAsync()
+        {
+            string url = _baseApiAddress + "user/chat/account/";
+            return await HttpClient.GetAsync<XmppAccount>(url);
+        }
+
+        public async Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsAsync()
+        {
+            string url = _baseApiAddress + "user/livestreams/";
+            return await HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url);
+        }
+
+        public async Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAirAsync()
+        {
+            string url = _baseApiAddress + "user/livestreams/onair/";
+            return await HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url);
+        }
+
+        public async Task<PaginationResult<Video>> GetUserVideosAsync()
+        {
+            string url = _baseApiAddress + "user/videos/";
+            return await HttpClient.GetAsync<PaginationResult<Video>>(url);
+        }
+
+        public async Task<IEnumerable<Video>> GetUserLatestVideosAsync()
+        {
+            string url = _baseApiAddress + "user/videos/latest/";
+            return await HttpClient.GetAsync<IEnumerable<Video>>(url);
+        }
+
         #endregion
     }
 }

@@ -36,6 +36,8 @@
   <ItemGroup>
     <Compile Include="CodingCategory.cs" />
     <Compile Include="LiveStream.cs" />
+    <Compile Include="LiveStreamPrivate.cs" />
+    <Compile Include="UserPrivate.cs" />
     <Compile Include="ProductType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScheduledBroadcast.cs" />
@@ -43,6 +45,7 @@
     <Compile Include="User.cs" />
     <Compile Include="Video.cs" />
     <Compile Include="VideoRegion.cs" />
+    <Compile Include="XmppAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

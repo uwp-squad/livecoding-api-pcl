@@ -133,6 +133,54 @@ namespace LivecodingApi.Services
         /// <returns></returns>
         Task<UserPrivate> GetCurrentUserAsync();
 
+        /// <summary>
+        /// Returns current user followers
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_User_followers)
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<User>> GetFollowersAsync();
+
+        /// <summary>
+        /// Returns current user lsit of followed users
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_User_follows)
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<User>> GetFollowsAsync();
+
+        /// <summary>
+        /// Returns current user XMPP account information (to access the chat)
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Xmpp_Account_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<XmppAccount> GetXmppAccountAsync();
+
+        /// <summary>
+        /// Get list of user channels (currently, only one is in the list at the same time)
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsAsync();
+
+        /// <summary>
+        /// Get list of user channels currently on air (currently, only one is in the list at the same time)
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_onair)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAirAsync();
+
+        /// <summary>
+        /// Returns current user videos
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Video_list)
+        /// </summary>
+        /// <returns></returns>
+        Task<PaginationResult<Video>> GetUserVideosAsync();
+
+        /// <summary>
+        /// Returns current user latest videos
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<Video>> GetUserLatestVideosAsync();
+
         #endregion
     }
 }

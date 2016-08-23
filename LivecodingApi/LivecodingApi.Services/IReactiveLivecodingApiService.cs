@@ -27,7 +27,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search coding categories (based on fields 'name', 'slug' or 'sort')</param>
         /// <returns></returns>
-        IObservable<PaginationResult<CodingCategory>> GetCodingCategoriesAsync(string search = null);
+        IObservable<PaginationResult<CodingCategory>> GetCodingCategories(string search = null);
 
         /// <summary>
         /// Returns a coding category based on his name
@@ -35,7 +35,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="name">Name of the category</param>
         /// <returns></returns>
-        IObservable<CodingCategory> GetCodingCategoryByNameAsync(string name);
+        IObservable<CodingCategory> GetCodingCategoryByName(string name);
 
         #endregion
 
@@ -47,14 +47,14 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search livestreams (based on fields 'title', 'description' or 'tags')</param>
         /// <returns></returns>
-        IObservable<PaginationResult<LiveStream>> GetLiveStreamsAsync(string search = null);
+        IObservable<PaginationResult<LiveStream>> GetLiveStreams(string search = null);
 
         /// <summary>
         /// Returns all livestreams currently on air
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_onair)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync();
+        IObservable<PaginationResult<LiveStream>> GetLiveStreamsOnAir();
 
         /// <summary>
         /// Returns livestream of a user
@@ -62,7 +62,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="userSlug">Username slug</param>
         /// <returns></returns>
-        IObservable<LiveStream> GetCurrentLivestreamOfUserAsync(string userSlug);
+        IObservable<LiveStream> GetCurrentLivestreamOfUser(string userSlug);
 
         #endregion
 
@@ -74,7 +74,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search languages (based on field 'name')</param>
         /// <returns></returns>
-        IObservable<PaginationResult<SiteLanguage>> GetLanguagesAsync(string search = null);
+        IObservable<PaginationResult<SiteLanguage>> GetLanguages(string search = null);
 
         /// <summary>
         /// Returns a language by its ISO code
@@ -82,7 +82,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="iso">Iso code (ex: "fr")</param>
         /// <returns></returns>
-        IObservable<SiteLanguage> GetLanguageByIsoCodeAsync(string iso);
+        IObservable<SiteLanguage> GetLanguageByIsoCode(string iso);
 
         #endregion
 
@@ -93,7 +93,7 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Scheduled_Broadcast_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync();
+        IObservable<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcasts();
 
         /// <summary>
         /// Returns a scheduled broadcast by its id
@@ -101,7 +101,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="id">Id of the scheduled broadcast</param>
         /// <returns></returns>
-        IObservable<ScheduledBroadcast> GetScheduledBroadcastByIdAsync(string id);
+        IObservable<ScheduledBroadcast> GetScheduledBroadcastById(string id);
 
         #endregion
 
@@ -112,7 +112,7 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Video_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<Video>> GetVideosAsync();
+        IObservable<PaginationResult<Video>> GetVideos();
 
         /// <summary>
         /// Returns a video by its slug
@@ -120,7 +120,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="slug">Slug of the video</param>
         /// <returns></returns>
-        IObservable<Video> GetVideoBySlugAsync(string videoSlug);
+        IObservable<Video> GetVideoBySlug(string videoSlug);
 
         #endregion
 
@@ -131,7 +131,55 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_User_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<UserPrivate> GetCurrentUserAsync();
+        IObservable<UserPrivate> GetCurrentUser();
+
+        /// <summary>
+        /// Returns current user followers
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_User_followers)
+        /// </summary>
+        /// <returns></returns>
+        IObservable<IEnumerable<User>> GetFollowers();
+
+        /// <summary>
+        /// Returns current user lsit of followed users
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_User_follows)
+        /// </summary>
+        /// <returns></returns>
+        IObservable<IEnumerable<User>> GetFollows();
+
+        /// <summary>
+        /// Returns current user XMPP account information (to access the chat)
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Xmpp_Account_list)
+        /// </summary>
+        /// <returns></returns>
+        IObservable<XmppAccount> GetXmppAccount();
+
+        /// <summary>
+        /// Get list of user channels (currently, only one is in the list at the same time)
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_list)
+        /// </summary>
+        /// <returns></returns>
+        IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreams();
+
+        /// <summary>
+        /// Get list of user channels currently on air (currently, only one is in the list at the same time)
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_onair)
+        /// </summary>
+        /// <returns></returns>
+        IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAir();
+
+        /// <summary>
+        /// Returns current user videos
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Video_list)
+        /// </summary>
+        /// <returns></returns>
+        IObservable<PaginationResult<Video>> GetUserVideos();
+
+        /// <summary>
+        /// Returns current user latest videos
+        /// </summary>
+        /// <returns></returns>
+        IObservable<IEnumerable<Video>> GetUserLatestVideos();
 
         #endregion
     }

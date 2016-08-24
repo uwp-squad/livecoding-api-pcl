@@ -37,6 +37,6 @@
         <file src=".\LivecodingApi\LivecodingApi.UniversalWindows\bin\Release\LivecodingApi.*.dll" target="lib\portable-win81+wpa81+uap10.0" />
         <file src=".\LivecodingApi\LivecodingApi.NetFramework\bin\Release\LivecodingApi.*.dll" target="lib\net45" />
         <!--<file src=".\LivecodingApi\LivecodingApi.Android\bin\Release\LivecodingApi.*.dll" target="lib\monoandroid" />-->
-        <file src=".\LivecodingApi\LivecodingApi.iOS\bin\iPhone\Release\LivecodingApi.*.dll" target="lib\xamarin.ios" />
+        <file src=".\LivecodingApi\LivecodingApi.iOS\bin\Release\LivecodingApi.*.dll" target="lib\xamarin.ios" />
     </files>
 </package>

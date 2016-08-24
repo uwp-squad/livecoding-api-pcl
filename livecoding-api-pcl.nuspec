@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>livecoding-api-pcl</id>
+        <version>1.0.0</version>
+        <title>Livecoding Api</title>
+        <authors>David Bottiau</authors>
+        <owners>David Bottiau</owners>
+        <projectUrl>https://github.com/uwp-squad/livecoding-api-pcl</projectUrl>
+        <iconUrl>http://apk-dl.com/detail/image/de.byteschmiede.livecodingtv-w250.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A .NET library to access the livecoding.tv API</description>
+        <releaseNotes>Create first version</releaseNotes>
+        <copyright>Copyright 2016</copyright>
+        <tags>Livecoding Api</tags>
+        <dependencies>
+            <group>
+                <dependency id="Newtonsoft.Json" />
+                <dependency id="System.Reactive" />
+            </group>
+            <group targetFramework="net45">
+                <dependency id="System.Net.Http" />
+            </group>
+            <group targetFramework="uap10.0">
+                <dependency id="Microsoft.Net.Http" />
+            </group>
+            <group targetFramework="win81">
+                <dependency id="Microsoft.Net.Http" />
+            </group>
+            <group targetFramework="wpa81">
+                <dependency id="Microsoft.Net.Http" />
+            </group>
+        </dependencies>
+    </metadata>
+
+    <files>
+        <file src=".\LivecodingApi\LivecodingApi.UniversalWindows\bin\Release\LivecodingApi.*.dll" target="lib\portable-win81+wpa81+uap10.0" />
+        <file src=".\LivecodingApi\LivecodingApi.NetFramework\bin\Release\LivecodingApi.*.dll" target="lib\net45" />
+        <file src=".\LivecodingApi\LivecodingApi.Android\bin\Release\LivecodingApi.*.dll" target="lib\monoandroid" />
+        <file src=".\LivecodingApi\LivecodingApi.iOS\bin\iPhone\Release\LivecodingApi.*.dll" target="lib\xamarin.ios" />
+    </files>
+</package>

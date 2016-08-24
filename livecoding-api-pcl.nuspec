@@ -15,20 +15,9 @@
         <tags>Livecoding Api</tags>
         <dependencies>
             <group>
-                <dependency id="Newtonsoft.Json" />
-                <dependency id="System.Reactive" />
-            </group>
-            <group targetFramework="net45">
-                <dependency id="System.Net.Http" />
-            </group>
-            <group targetFramework="uap10.0">
-                <dependency id="Microsoft.Net.Http" />
-            </group>
-            <group targetFramework="win81">
-                <dependency id="Microsoft.Net.Http" />
-            </group>
-            <group targetFramework="wpa81">
-                <dependency id="Microsoft.Net.Http" />
+                <dependency id="Newtonsoft.Json" version="[9.0.1,)" />
+                <dependency id="System.Reactive" version="[3.0.0,)" />
+                <dependency id="System.Net.Http" version="[4.1.0,)" />
             </group>
         </dependencies>
     </metadata>

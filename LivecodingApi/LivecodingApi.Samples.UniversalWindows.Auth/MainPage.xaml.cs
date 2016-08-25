@@ -35,16 +35,10 @@ namespace LivecodingApi.Samples.UniversalWindows.Auth
         {
             // Authenticate
             string token = string.Empty;
-            IAuthenticationService authService = new AuthenticationService();
-            bool? isAuthenticated = await authService.LoginAsync(_clientId, _clientSecret);
-
-            if (isAuthenticated.HasValue && isAuthenticated.Value)
-            {
-                token = await authService.RetrieveTokenAsync();
-            }
+            var service = new LivecodingApiService();
+            bool? isAuthenticated = await service.LoginAsync(_clientId, _clientSecret);
 
             // Try to use the API
-            var service = new LivecodingApiService(token);
             try
             {
                 var user = await service.GetCurrentUserAsync();

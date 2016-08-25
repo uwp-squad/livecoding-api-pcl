@@ -14,6 +14,7 @@ using System.Net.Http.Headers;
 using Windows.Web.Http;
 using Windows.Web.Http.Headers;
 using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
+using Windows.Security.Authentication.Web;
 #endif
 using System.Reactive.Threading.Tasks;
 
@@ -46,6 +47,15 @@ namespace LivecodingApi.Services
             }
         }
 
+        private static string[] _scopes = new string[]
+        {
+            "read",
+            "read:viewer",
+            "read:user",
+            "read:channel",
+            "chat"
+        };
+
         #endregion
 
         #region Properties
@@ -61,6 +71,47 @@ namespace LivecodingApi.Services
         public ReactiveLivecodingApiService(string token)
         {
             Token = token;
+        }
+
+        #endregion
+
+        #region Authentication
+
+        public IObservable<bool?> Login(string oauthKey, string oauthSecret)
+        {
+#if NETFX_CORE
+            return Task.Run<bool?>(async () =>
+            {
+                try
+                {
+                    var state = Guid.NewGuid();
+                    string scopes = string.Join(" ", _scopes);
+
+                    string startUrl = $"https://www.livecoding.tv/o/authorize?scope={scopes}&state={state}&redirect_uri={AuthHelper.RedirectUrl}&response_type=token&client_id={oauthKey}";
+                    var startUri = new Uri(startUrl);
+                    var endUri = new Uri(AuthHelper.RedirectUrl);
+
+                    var webAuthenticationResult = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None, startUri, endUri);
+                    Token = AuthHelper.RetrieveToken(webAuthenticationResult, oauthKey, oauthSecret);
+                    return !string.IsNullOrWhiteSpace(Token);
+                }
+                catch
+                {
+                    return null;
+                }
+            }).ToObservable();
+#else
+            throw new NotImplementedException();
+#endif
+        }
+
+        public IObservable<string> RetrieveToken()
+        {
+#if NETFX_CORE
+            return Task.FromResult(Token).ToObservable();
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         #endregion

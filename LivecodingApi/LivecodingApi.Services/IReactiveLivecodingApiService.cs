@@ -19,6 +19,22 @@ namespace LivecodingApi.Services
 
         #endregion
 
+        #region Authentication
+
+        /// <summary>
+        /// Execute login process through OAuth2 authentication mechanism
+        /// </summary>
+        /// <returns>true: login success / false: login failed / null: exception occured</returns>
+        IObservable<bool?> Login(string oauthKey, string oauthSecret);
+
+        /// <summary>
+        /// Retrieve token to use Livecoding Api methods that requires a connected user
+        /// </summary>
+        /// <returns>The token</returns>
+        IObservable<string> RetrieveToken();
+
+        #endregion
+
         #region Coding Categories
 
         /// <summary>

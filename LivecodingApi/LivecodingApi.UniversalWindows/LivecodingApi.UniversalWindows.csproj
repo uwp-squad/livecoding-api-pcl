@@ -58,7 +58,6 @@
     <Compile Include="Helpers\AuthHelper.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\LivecodingApiService.cs" />
     <Compile Include="Services\ReactiveLivecodingApiService.cs" />
   </ItemGroup>

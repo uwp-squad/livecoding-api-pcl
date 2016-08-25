@@ -101,15 +101,6 @@ namespace LivecodingApi.Services
 #endif
         }
 
-        public Task<string> RetrieveTokenAsync()
-        {
-#if NETFX_CORE
-            return Task.FromResult(Token);
-#else
-            throw new NotImplementedException();
-#endif
-        }
-
         #endregion
 
         #region Coding Categories

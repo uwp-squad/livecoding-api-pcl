@@ -27,12 +27,6 @@ namespace LivecodingApi.Services
         /// <returns>true: login success / false: login failed / null: exception occured</returns>
         Task<bool?> LoginAsync(string oauthKey, string oauthSecret);
 
-        /// <summary>
-        /// Retrieve token to use Livecoding Api methods that requires a connected user
-        /// </summary>
-        /// <returns>The token</returns>
-        Task<string> RetrieveTokenAsync();
-
         #endregion
 
         #region Coding Categories

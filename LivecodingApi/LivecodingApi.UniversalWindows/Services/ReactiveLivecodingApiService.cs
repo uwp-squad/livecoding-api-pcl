@@ -105,15 +105,6 @@ namespace LivecodingApi.Services
 #endif
         }
 
-        public IObservable<string> RetrieveToken()
-        {
-#if NETFX_CORE
-            return Task.FromResult(Token).ToObservable();
-#else
-            throw new NotImplementedException();
-#endif
-        }
-
         #endregion
 
         #region Coding Categories

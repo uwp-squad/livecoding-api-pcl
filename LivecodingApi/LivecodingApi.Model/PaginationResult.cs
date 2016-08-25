@@ -20,5 +20,9 @@ namespace LivecodingApi.Configuration
 
         [JsonProperty("results")]
         public IEnumerable<T> Results { get; set; }
+
+        public bool HasPreviousPage { get { return !string.IsNullOrWhiteSpace(PreviousUrl); } }
+
+        public bool HasNextPage { get { return !string.IsNullOrWhiteSpace(NextUrl); } }
     }
 }

@@ -1,4 +1,5 @@
-﻿using LivecodingApi.Services;
+﻿using LivecodingApi.Model;
+using LivecodingApi.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,6 +43,15 @@ namespace LivecodingApi.Samples.UniversalWindows.Auth
             try
             {
                 var user = await service.GetCurrentUserAsync();
+
+                var paginationRequest = new PaginationRequest
+                {
+                    Search = "uwp",
+                    ItemsPerPage = 20,
+                    Page = 2
+                };
+
+                var videos = await service.GetVideosAsync(paginationRequest);
             }
             catch (Exception ex)
             {

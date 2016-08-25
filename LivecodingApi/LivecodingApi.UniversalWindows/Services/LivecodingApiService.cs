@@ -108,7 +108,7 @@ namespace LivecodingApi.Services
         public async Task<PaginationResult<CodingCategory>> GetCodingCategoriesAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "codingcategories/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<CodingCategory>>(url);
         }
 
@@ -125,14 +125,14 @@ namespace LivecodingApi.Services
         public async Task<PaginationResult<LiveStream>> GetLiveStreamsAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "livestreams/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
         }
 
         public async Task<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "livestreams/onair/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<LiveStream>>(url);
         }
 
@@ -149,7 +149,7 @@ namespace LivecodingApi.Services
         public async Task<PaginationResult<SiteLanguage>> GetLanguagesAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "languages/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<SiteLanguage>>(url);
         }
 
@@ -166,7 +166,7 @@ namespace LivecodingApi.Services
         public async Task<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "scheduledbroadcast/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<ScheduledBroadcast>>(url);
         }
 
@@ -183,7 +183,7 @@ namespace LivecodingApi.Services
         public async Task<PaginationResult<Video>> GetVideosAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "videos/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<Video>>(url);
         }
 
@@ -224,21 +224,21 @@ namespace LivecodingApi.Services
         public async Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "user/livestreams/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url);
         }
 
         public async Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAirAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "user/livestreams/onair/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url);
         }
 
         public async Task<PaginationResult<Video>> GetUserVideosAsync(PaginationRequest request)
         {
             string url = _baseApiAddress + "user/videos/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return await HttpClient.GetAsync<PaginationResult<Video>>(url);
         }
 

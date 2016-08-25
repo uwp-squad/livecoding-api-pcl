@@ -112,7 +112,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<CodingCategory>> GetCodingCategories(PaginationRequest request)
         {
             string url = _baseApiAddress + "codingcategories/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<CodingCategory>>(url)
                 .ToObservable();
         }
@@ -131,7 +131,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<LiveStream>> GetLiveStreams(PaginationRequest request)
         {
             string url = _baseApiAddress + "livestreams/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStream>>(url)
                 .ToObservable();
         }
@@ -139,7 +139,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<LiveStream>> GetLiveStreamsOnAir(PaginationRequest request)
         {
             string url = _baseApiAddress + "livestreams/onair/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStream>>(url)
                 .ToObservable();
         }
@@ -158,7 +158,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<SiteLanguage>> GetLanguages(PaginationRequest request)
         {
             string url = _baseApiAddress + "languages/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<SiteLanguage>>(url)
                 .ToObservable();
         }
@@ -177,7 +177,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcasts(PaginationRequest request)
         {
             string url = _baseApiAddress + "scheduledbroadcast/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<ScheduledBroadcast>>(url)
                 .ToObservable();
         }
@@ -196,7 +196,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<Video>> GetVideos(PaginationRequest request)
         {
             string url = _baseApiAddress + "videos/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<Video>>(url)
                 .ToObservable();
         }
@@ -243,7 +243,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreams(PaginationRequest request)
         {
             string url = _baseApiAddress + "user/livestreams/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url)
                 .ToObservable();
         }
@@ -251,7 +251,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAir(PaginationRequest request)
         {
             string url = _baseApiAddress + "user/livestreams/onair/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url)
                 .ToObservable();
         }
@@ -259,7 +259,7 @@ namespace LivecodingApi.Services
         public IObservable<PaginationResult<Video>> GetUserVideos(PaginationRequest request)
         {
             string url = _baseApiAddress + "user/videos/";
-            url += PaginationRequestHelper.CreateHttpQueryParams(request);
+            url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<Video>>(url)
                 .ToObservable();
         }

@@ -68,6 +68,9 @@
     <Compile Include="..\LivecodingApi.UniversalWindows\Helpers\HttpHelper.cs">
       <Link>Helpers\HttpHelper.cs</Link>
     </Compile>
+    <Compile Include="..\LivecodingApi.UniversalWindows\Helpers\PaginationRequestHelper.cs">
+      <Link>Helpers\PaginationRequestHelper.cs</Link>
+    </Compile>
     <Compile Include="..\LivecodingApi.UniversalWindows\Services\LivecodingApiService.cs">
       <Link>Services\LivecodingApiService.cs</Link>
     </Compile>

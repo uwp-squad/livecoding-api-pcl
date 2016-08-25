@@ -37,7 +37,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search coding categories (based on fields 'name', 'slug' or 'sort')</param>
         /// <returns></returns>
-        Task<PaginationResult<CodingCategory>> GetCodingCategoriesAsync(string search = null);
+        Task<PaginationResult<CodingCategory>> GetCodingCategoriesAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns a coding category based on his name
@@ -57,14 +57,14 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search livestreams (based on fields 'title', 'description' or 'tags')</param>
         /// <returns></returns>
-        Task<PaginationResult<LiveStream>> GetLiveStreamsAsync(string search = null);
+        Task<PaginationResult<LiveStream>> GetLiveStreamsAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns all livestreams currently on air
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_onair)
         /// </summary>
         /// <returns></returns>
-        Task<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync();
+        Task<PaginationResult<LiveStream>> GetLiveStreamsOnAirAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns livestream of a user
@@ -84,7 +84,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search languages (based on field 'name')</param>
         /// <returns></returns>
-        Task<PaginationResult<SiteLanguage>> GetLanguagesAsync(string search = null);
+        Task<PaginationResult<SiteLanguage>> GetLanguagesAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns a language by its ISO code
@@ -103,7 +103,7 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Scheduled_Broadcast_list)
         /// </summary>
         /// <returns></returns>
-        Task<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync();
+        Task<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcastsAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns a scheduled broadcast by its id
@@ -122,7 +122,7 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Video_list)
         /// </summary>
         /// <returns></returns>
-        Task<PaginationResult<Video>> GetVideosAsync();
+        Task<PaginationResult<Video>> GetVideosAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns a video by its slug
@@ -169,24 +169,25 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_list)
         /// </summary>
         /// <returns></returns>
-        Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsAsync();
+        Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsAsync(PaginationRequest request);
 
         /// <summary>
         /// Get list of user channels currently on air (currently, only one is in the list at the same time)
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_onair)
         /// </summary>
         /// <returns></returns>
-        Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAirAsync();
+        Task<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAirAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns current user videos
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Video_list)
         /// </summary>
         /// <returns></returns>
-        Task<PaginationResult<Video>> GetUserVideosAsync();
+        Task<PaginationResult<Video>> GetUserVideosAsync(PaginationRequest request);
 
         /// <summary>
         /// Returns current user latest videos
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Video_latest)
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<Video>> GetUserLatestVideosAsync();

@@ -37,7 +37,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search coding categories (based on fields 'name', 'slug' or 'sort')</param>
         /// <returns></returns>
-        IObservable<PaginationResult<CodingCategory>> GetCodingCategories(string search = null);
+        IObservable<PaginationResult<CodingCategory>> GetCodingCategories(PaginationRequest request);
 
         /// <summary>
         /// Returns a coding category based on his name
@@ -57,14 +57,14 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search livestreams (based on fields 'title', 'description' or 'tags')</param>
         /// <returns></returns>
-        IObservable<PaginationResult<LiveStream>> GetLiveStreams(string search = null);
+        IObservable<PaginationResult<LiveStream>> GetLiveStreams(PaginationRequest request);
 
         /// <summary>
         /// Returns all livestreams currently on air
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Live_Stream_onair)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<LiveStream>> GetLiveStreamsOnAir();
+        IObservable<PaginationResult<LiveStream>> GetLiveStreamsOnAir(PaginationRequest request);
 
         /// <summary>
         /// Returns livestream of a user
@@ -84,7 +84,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="search">Search languages (based on field 'name')</param>
         /// <returns></returns>
-        IObservable<PaginationResult<SiteLanguage>> GetLanguages(string search = null);
+        IObservable<PaginationResult<SiteLanguage>> GetLanguages(PaginationRequest request);
 
         /// <summary>
         /// Returns a language by its ISO code
@@ -103,7 +103,7 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Scheduled_Broadcast_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcasts();
+        IObservable<PaginationResult<ScheduledBroadcast>> GetScheduledBroadcasts(PaginationRequest request);
 
         /// <summary>
         /// Returns a scheduled broadcast by its id
@@ -122,7 +122,7 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Video_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<Video>> GetVideos();
+        IObservable<PaginationResult<Video>> GetVideos(PaginationRequest request);
 
         /// <summary>
         /// Returns a video by its slug
@@ -169,24 +169,25 @@ namespace LivecodingApi.Services
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreams();
+        IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreams(PaginationRequest request);
 
         /// <summary>
         /// Get list of user channels currently on air (currently, only one is in the list at the same time)
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Live_Stream_onair)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAir();
+        IObservable<PaginationResult<LiveStreamPrivate>> GetUserLivestreamsOnAir(PaginationRequest request);
 
         /// <summary>
         /// Returns current user videos
         /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Video_list)
         /// </summary>
         /// <returns></returns>
-        IObservable<PaginationResult<Video>> GetUserVideos();
+        IObservable<PaginationResult<Video>> GetUserVideos(PaginationRequest request);
 
         /// <summary>
         /// Returns current user latest videos
+        /// (https://www.livecoding.tv/developer/documentation/#!/v1/Account_Video_latest)
         /// </summary>
         /// <returns></returns>
         IObservable<IEnumerable<Video>> GetUserLatestVideos();

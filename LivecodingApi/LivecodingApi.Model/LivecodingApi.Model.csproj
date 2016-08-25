@@ -37,6 +37,8 @@
     <Compile Include="CodingCategory.cs" />
     <Compile Include="LiveStream.cs" />
     <Compile Include="LiveStreamPrivate.cs" />
+    <Compile Include="PaginationRequest.cs" />
+    <Compile Include="PaginationResult.cs" />
     <Compile Include="UserPrivate.cs" />
     <Compile Include="ProductType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

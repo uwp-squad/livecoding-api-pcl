@@ -1,5 +1,4 @@
-﻿using LivecodingApi.Configuration;
-using LivecodingApi.Model;
+﻿using LivecodingApi.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

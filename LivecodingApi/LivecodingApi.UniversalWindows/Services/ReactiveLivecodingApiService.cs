@@ -114,6 +114,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "codingcategories/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<CodingCategory>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -133,6 +134,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "livestreams/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStream>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -141,6 +143,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "livestreams/onair/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStream>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -160,6 +163,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "languages/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<SiteLanguage>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -179,6 +183,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "scheduledbroadcast/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<ScheduledBroadcast>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -198,6 +203,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "videos/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<Video>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -245,6 +251,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "user/livestreams/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -253,6 +260,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "user/livestreams/onair/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<LiveStreamPrivate>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 
@@ -261,6 +269,7 @@ namespace LivecodingApi.Services
             string url = _baseApiAddress + "user/videos/";
             url += PaginationHelper.CreateHttpQueryParams(request);
             return HttpClient.GetAsync<PaginationResult<Video>>(url)
+                .ContinueWith(task => task.Result.FillWithPaginationRequest(request))
                 .ToObservable();
         }
 

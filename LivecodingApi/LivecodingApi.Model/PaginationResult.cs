@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LivecodingApi.Configuration
+namespace LivecodingApi.Model
 {
     public class PaginationResult<T>
     {
@@ -24,5 +24,11 @@ namespace LivecodingApi.Configuration
         public bool HasPreviousPage { get { return !string.IsNullOrWhiteSpace(PreviousUrl); } }
 
         public bool HasNextPage { get { return !string.IsNullOrWhiteSpace(NextUrl); } }
+
+        public int CurrentPage { get; set; }
+
+        public int ItemsPerPage { get; set; }
+
+        public int TotalPages { get { return (Count + ItemsPerPage - 1) / ItemsPerPage; } }
     }
 }

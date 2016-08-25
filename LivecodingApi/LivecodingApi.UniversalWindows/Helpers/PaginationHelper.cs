@@ -36,5 +36,12 @@ namespace LivecodingApi.Helpers
 
             return "";
         }
+
+        public static PaginationResult<T> FillWithPaginationRequest<T>(this PaginationResult<T> result, PaginationRequest request)
+        {
+            result.CurrentPage = request.Page;
+            result.ItemsPerPage = request.ItemsPerPage;
+            return result;
+        }
     }
 }

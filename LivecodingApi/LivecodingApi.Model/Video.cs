@@ -53,5 +53,8 @@ namespace LivecodingApi.Model
 
         [JsonProperty("thumbnail_url")]
         public string ThumbnailUrl { get; set; }
+
+        [JsonProperty("embed_url")]
+        public string EmbedUrl { get; set; }
     }
 }

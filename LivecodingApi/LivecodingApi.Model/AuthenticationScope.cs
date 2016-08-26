@@ -32,5 +32,10 @@ namespace LivecodingApi.Model
         /// OPTIONAL Access chat on your behalf
         /// </summary>
         public static string Chat = "chat";
+
+        /// <summary>
+        /// ALL possible scopes
+        /// </summary>
+        public static string[] All = new[] { Read, ReadChannel, ReadUser, ReadViewer, Chat };
     }
 }

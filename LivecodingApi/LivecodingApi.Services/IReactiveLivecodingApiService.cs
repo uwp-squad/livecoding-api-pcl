@@ -25,7 +25,7 @@ namespace LivecodingApi.Services
         /// </summary>
         /// <param name="oauthKey">OAuth client key (provided by livecoding website)</param>
         /// <param name="oauthSecret">OAuth secret key (provided by livecoding website)</param>
-        /// <param name="scopes">List of scopes</param>
+        /// <param name="scopes">List of scopes (AuthenticationScope)</param>
         /// <returns>true: login success / false: login failed / null: exception occured</returns>
         IObservable<bool?> Login(string oauthKey, string oauthSecret, string[] scopes);
 

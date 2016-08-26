@@ -46,7 +46,7 @@ namespace LivecodingApi.Services
                 return httpClient;
             }
         }
-        
+
         #endregion
 
         #region Properties
@@ -75,8 +75,20 @@ namespace LivecodingApi.Services
             {
                 try
                 {
-                    // TODO : Check scopes variable
+                    // Check scopes variable
+                    if (scopes.All(s => s != AuthenticationScope.Read))
+                    {
+                        throw new Exception($"The authentication scope '{AuthenticationScope.Read}' is required.");
+                    }
 
+                    var notScopes = scopes.Where(s => !AuthenticationScope.All.Contains(s));
+                    if (notScopes.Any())
+                    {
+                        string notScopesJoined = string.Join(", ", notScopes);
+                        throw new Exception($"The following authentication scopes does not exist : {notScopesJoined}.");
+                    }
+
+                    // Create Auth url
                     var state = Guid.NewGuid();
                     string scopesJoined = string.Join(" ", scopes);
 
@@ -84,6 +96,7 @@ namespace LivecodingApi.Services
                     var startUri = new Uri(startUrl);
                     var endUri = new Uri(AuthHelper.RedirectUrl);
 
+                    // Launch authentication webview
                     var webAuthenticationResult = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None, startUri, endUri);
                     Token = AuthHelper.RetrieveToken(webAuthenticationResult, oauthKey, oauthSecret);
                     return !string.IsNullOrWhiteSpace(Token);

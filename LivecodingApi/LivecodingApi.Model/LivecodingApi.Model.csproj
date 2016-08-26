@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationScope.cs" />
     <Compile Include="CodingCategory.cs" />
     <Compile Include="LiveStream.cs" />
     <Compile Include="LiveStreamPrivate.cs" />

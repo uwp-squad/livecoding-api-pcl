@@ -46,15 +46,6 @@ namespace LivecodingApi.Services
             }
         }
 
-        private static string[] _scopes = new string[]
-        {
-            "read",
-            "read:viewer",
-            "read:user",
-            "read:channel",
-            "chat"
-        };
-
         #endregion
 
         #region Properties
@@ -82,8 +73,7 @@ namespace LivecodingApi.Services
             try
             {
                 var state = Guid.NewGuid();
-                string scopes = string.Join(" ", _scopes);
-
+                string scopes = string.Join(" ", new string[] { AuthenticationScope.Read, AuthenticationScope.ReadViewer, AuthenticationScope.ReadUser, AuthenticationScope.ReadChannel, AuthenticationScope.Chat });
                 string startUrl = $"https://www.livecoding.tv/o/authorize?scope={scopes}&state={state}&redirect_uri={AuthHelper.RedirectUrl}&response_type=token&client_id={oauthKey}";
                 var startUri = new Uri(startUrl);
                 var endUri = new Uri(AuthHelper.RedirectUrl);

@@ -37,7 +37,8 @@ namespace LivecodingApi.Samples.UniversalWindows.Auth
             // Authenticate
             string token = string.Empty;
             var service = new LivecodingApiService();
-            bool? isAuthenticated = await service.LoginAsync(_clientId, _clientSecret);
+            var scopes = new[] { AuthenticationScope.Read, AuthenticationScope.ReadChannel, AuthenticationScope.ReadUser, AuthenticationScope.ReadViewer, AuthenticationScope.Chat };
+            bool? isAuthenticated = await service.LoginAsync(_clientId, _clientSecret, scopes);
 
             // Try to use the API
             try

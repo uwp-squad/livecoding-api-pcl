@@ -67,14 +67,17 @@ namespace LivecodingApi.Services
 
         #region Authentication
 
-        public async Task<bool?> LoginAsync(string oauthKey, string oauthSecret)
+        public async Task<bool?> LoginAsync(string oauthKey, string oauthSecret, string[] scopes)
         {
 #if NETFX_CORE
             try
             {
+                // TODO : Check scopes variable
+
                 var state = Guid.NewGuid();
-                string scopes = string.Join(" ", new string[] { AuthenticationScope.Read, AuthenticationScope.ReadViewer, AuthenticationScope.ReadUser, AuthenticationScope.ReadChannel, AuthenticationScope.Chat });
-                string startUrl = $"https://www.livecoding.tv/o/authorize?scope={scopes}&state={state}&redirect_uri={AuthHelper.RedirectUrl}&response_type=token&client_id={oauthKey}";
+                string scopesJoined = string.Join(" ", scopes);
+
+                string startUrl = $"https://www.livecoding.tv/o/authorize?scope={scopesJoined}&state={state}&redirect_uri={AuthHelper.RedirectUrl}&response_type=token&client_id={oauthKey}";
                 var startUri = new Uri(startUrl);
                 var endUri = new Uri(AuthHelper.RedirectUrl);
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reactive.Linq;
 #if __IOS__ || __ANDROID__ || NET45
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -71,31 +72,31 @@ namespace LivecodingApi.Services
         public IObservable<bool?> Login(string oauthKey, string oauthSecret, string[] scopes)
         {
 #if NETFX_CORE
-            return Task.Run<bool?>(async () =>
+            return Observable.StartAsync<bool?>(async () =>
             {
+                // Check scopes variable
+                if (scopes.All(s => s != AuthenticationScope.Read))
+                {
+                    throw new Exception($"The authentication scope '{AuthenticationScope.Read}' is required.");
+                }
+
+                var notScopes = scopes.Where(s => !AuthenticationScope.All.Contains(s));
+                if (notScopes.Any())
+                {
+                    string notScopesJoined = string.Join(", ", notScopes);
+                    throw new Exception($"The following authentication scopes does not exist : {notScopesJoined}.");
+                }
+
+                // Create Auth url
+                var state = Guid.NewGuid();
+                string scopesJoined = string.Join(" ", scopes);
+
+                string startUrl = $"https://www.livecoding.tv/o/authorize?scope={scopesJoined}&state={state}&redirect_uri={AuthHelper.RedirectUrl}&response_type=token&client_id={oauthKey}";
+                var startUri = new Uri(startUrl);
+                var endUri = new Uri(AuthHelper.RedirectUrl);
+
                 try
                 {
-                    // Check scopes variable
-                    if (scopes.All(s => s != AuthenticationScope.Read))
-                    {
-                        throw new Exception($"The authentication scope '{AuthenticationScope.Read}' is required.");
-                    }
-
-                    var notScopes = scopes.Where(s => !AuthenticationScope.All.Contains(s));
-                    if (notScopes.Any())
-                    {
-                        string notScopesJoined = string.Join(", ", notScopes);
-                        throw new Exception($"The following authentication scopes does not exist : {notScopesJoined}.");
-                    }
-
-                    // Create Auth url
-                    var state = Guid.NewGuid();
-                    string scopesJoined = string.Join(" ", scopes);
-
-                    string startUrl = $"https://www.livecoding.tv/o/authorize?scope={scopesJoined}&state={state}&redirect_uri={AuthHelper.RedirectUrl}&response_type=token&client_id={oauthKey}";
-                    var startUri = new Uri(startUrl);
-                    var endUri = new Uri(AuthHelper.RedirectUrl);
-
                     // Launch authentication webview
                     var webAuthenticationResult = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None, startUri, endUri);
                     Token = AuthHelper.RetrieveToken(webAuthenticationResult, oauthKey, oauthSecret);
@@ -105,7 +106,7 @@ namespace LivecodingApi.Services
                 {
                     return null;
                 }
-            }).ToObservable();
+            });
 #else
             throw new NotImplementedException();
 #endif

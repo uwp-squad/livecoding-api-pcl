@@ -34,29 +34,57 @@ namespace LivecodingApi.Samples.UniversalWindows.Auth
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Authenticate
-            string token = string.Empty;
-            var service = new LivecodingApiService();
+            bool useReactive = true;
             var scopes = AuthenticationScope.All;
-            bool? isAuthenticated = await service.LoginAsync(_clientId, _clientSecret, scopes);
 
-            // Try to use the API
-            try
+            var paginationRequest = new PaginationRequest
             {
-                var user = await service.GetCurrentUserAsync();
+                Search = "uwp",
+                ItemsPerPage = 20,
+                Page = 2
+            };
 
-                var paginationRequest = new PaginationRequest
-                {
-                    Search = "uwp",
-                    ItemsPerPage = 20,
-                    Page = 2
-                };
+            if (useReactive)
+            {
+                // Authenticate
+                var reactiveService = new ReactiveLivecodingApiService();
+                reactiveService.Login(_clientId, _clientSecret, scopes)
+                    .Subscribe((result) =>
+                    {
+                        // TODO : Handle errors using Reactive paradigm
+                        if (result.HasValue && result.Value)
+                        {
+                            // Try to use the API
+                            reactiveService.GetCurrentUser()
+                                .Subscribe((userResult) =>
+                                {
 
-                var videos = await service.GetVideosAsync(paginationRequest);
+                                });
+
+                            reactiveService.GetVideos(paginationRequest)
+                                .Subscribe((videosResult) =>
+                                {
+
+                                });
+                        }
+                    });
             }
-            catch (Exception ex)
+            else
             {
-                return;
+                // Authenticate
+                var service = new LivecodingApiService();
+                bool? isAuthenticated = await service.LoginAsync(_clientId, _clientSecret, scopes);
+
+                // Try to use the API
+                try
+                {
+                    var user = await service.GetCurrentUserAsync();
+                    var videos = await service.GetVideosAsync(paginationRequest);
+                }
+                catch (Exception ex)
+                {
+                    return;
+                }
             }
         }
     }

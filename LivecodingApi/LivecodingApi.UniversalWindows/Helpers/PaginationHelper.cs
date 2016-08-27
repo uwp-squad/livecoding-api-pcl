@@ -31,7 +31,8 @@ namespace LivecodingApi.Helpers
 
             if (!string.IsNullOrWhiteSpace(request.Ordering))
             {
-                parameters.Add("ordering", request.Ordering);
+                string orderingValue = (request.DescendingOrdering ? "-" : string.Empty) + request.Ordering;
+                parameters.Add("ordering", orderingValue);
             }
 
             if (parameters.Count > 0)
@@ -48,6 +49,7 @@ namespace LivecodingApi.Helpers
             result.ItemsPerPage = request.ItemsPerPage;
             result.Search = request.Search;
             result.Ordering = request.Ordering;
+            result.DescendingOrdering = request.DescendingOrdering;
             return result;
         }
 

@@ -31,5 +31,6 @@ namespace LivecodingApi.Model
         public int ItemsPerPage { get; set; }
         public string Search { get; set; }
         public string Ordering { get; set; }
+        public bool DescendingOrdering { get; set; }
     }
 }

@@ -24,6 +24,9 @@ namespace LivecodingApi.Samples.UniversalWindows.Auth
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private LivecodingApiService _apiService = new LivecodingApiService();
+        private ReactiveLivecodingApiService _reactiveApiService = new ReactiveLivecodingApiService();
+
         private string _clientId = "<your-client-id>";
         private string _clientSecret = "<your-client-secret>";
 
@@ -36,7 +39,6 @@ namespace LivecodingApi.Samples.UniversalWindows.Auth
         {
             bool useReactive = true;
             var scopes = AuthenticationScope.All;
-
             var paginationRequest = new PaginationRequest
             {
                 Search = "uwp",
@@ -47,39 +49,48 @@ namespace LivecodingApi.Samples.UniversalWindows.Auth
             if (useReactive)
             {
                 // Authenticate
-                var reactiveService = new ReactiveLivecodingApiService();
-                reactiveService.Login(_clientId, _clientSecret, scopes)
+                _reactiveApiService.Login(_clientId, _clientSecret, scopes)
                     .Subscribe((result) =>
                     {
-                        // TODO : Handle errors using Reactive paradigm
                         if (result.HasValue && result.Value)
                         {
                             // Try to use the API
-                            reactiveService.GetCurrentUser()
+                            _reactiveApiService.GetCurrentUser()
                                 .Subscribe((userResult) =>
                                 {
-
+                                    // TODO
+                                },
+                                (error) =>
+                                {
+                                    // TODO
                                 });
 
-                            reactiveService.GetVideos(paginationRequest)
+                            _reactiveApiService.GetVideos(paginationRequest)
                                 .Subscribe((videosResult) =>
                                 {
-
+                                    // TODO
+                                },
+                                (error) =>
+                                {
+                                    // TODO
                                 });
                         }
+                    },
+                    (error) =>
+                    {
+                        // TODO
                     });
             }
             else
             {
                 // Authenticate
-                var service = new LivecodingApiService();
-                bool? isAuthenticated = await service.LoginAsync(_clientId, _clientSecret, scopes);
+                bool? isAuthenticated = await _apiService.LoginAsync(_clientId, _clientSecret, scopes);
 
                 // Try to use the API
                 try
                 {
-                    var user = await service.GetCurrentUserAsync();
-                    var videos = await service.GetVideosAsync(paginationRequest);
+                    var user = await _apiService.GetCurrentUserAsync();
+                    var videos = await _apiService.GetVideosAsync(paginationRequest);
                 }
                 catch (Exception ex)
                 {

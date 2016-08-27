@@ -43,5 +43,16 @@ namespace LivecodingApi.Helpers
             result.ItemsPerPage = request.ItemsPerPage;
             return result;
         }
+
+        public static Task<PaginationResult<T>> PaginationContinuation<T>(this Task<PaginationResult<T>> task, PaginationRequest request)
+        {
+            return task.ContinueWith(t =>
+            {
+                if (t.Exception != null)
+                    return null;
+
+                return t.Result.FillWithPaginationRequest(request);
+            });
+        }
     }
 }

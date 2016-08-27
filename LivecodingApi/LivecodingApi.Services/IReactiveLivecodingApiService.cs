@@ -14,12 +14,12 @@ namespace LivecodingApi.Services
         /// <summary>
         /// Token used by the Livecoding API to provide access to the entire API
         /// </summary>
-        string Token { get; set; }
+        string Token { get; }
 
         #endregion
 
         #region Authentication
-
+        
         /// <summary>
         /// Execute login process through OAuth2 authentication mechanism
         /// </summary>

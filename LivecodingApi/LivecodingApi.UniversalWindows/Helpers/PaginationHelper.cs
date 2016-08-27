@@ -35,6 +35,11 @@ namespace LivecodingApi.Helpers
                 parameters.Add("ordering", orderingValue);
             }
 
+            foreach (var filter in request.Filters)
+            {
+                parameters.Add(filter.Key, filter.Value);
+            }
+
             if (parameters.Count > 0)
             {
                 return "?" + string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"));
@@ -50,6 +55,7 @@ namespace LivecodingApi.Helpers
             result.Search = request.Search;
             result.Ordering = request.Ordering;
             result.DescendingOrdering = request.DescendingOrdering;
+            result.Filters = request.Filters;
             return result;
         }
 

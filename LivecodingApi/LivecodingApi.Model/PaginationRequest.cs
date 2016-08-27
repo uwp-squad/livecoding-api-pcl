@@ -13,5 +13,6 @@ namespace LivecodingApi.Model
         public string Search { get; set; }
         public string Ordering { get; set; }
         public bool DescendingOrdering { get; set; }
-    }
+        public Dictionary<string, string> Filters { get; set; } = new Dictionary<string, string>();
+}
 }

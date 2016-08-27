@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="AuthenticationScope.cs" />
     <Compile Include="CodingCategory.cs" />
+    <Compile Include="FilteringField.cs" />
     <Compile Include="IPagination.cs" />
     <Compile Include="LiveStream.cs" />
     <Compile Include="LiveStreamPrivate.cs" />

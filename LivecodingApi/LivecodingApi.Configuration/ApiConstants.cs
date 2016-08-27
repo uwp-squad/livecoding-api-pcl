@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LivecodingApi.Configuration
 {
-    public class Constants
+    public class ApiConstants
     {
         /// <summary>
         /// Base URL of the livecoding API

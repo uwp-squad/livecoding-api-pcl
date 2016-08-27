@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace LivecodingApi.Model
 {
-    public class PaginationRequest
+    public class PaginationRequest : IPagination
     {
-        public string Search { get; set; }
         public int Page { get; set; } = 1;
         public int ItemsPerPage { get; set; } = 100;
+        public string Search { get; set; }
+        public string Ordering { get; set; }
     }
 }

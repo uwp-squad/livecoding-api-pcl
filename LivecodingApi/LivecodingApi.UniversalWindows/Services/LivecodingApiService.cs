@@ -23,7 +23,7 @@ namespace LivecodingApi.Services
     {
         #region Fields
 
-        private readonly string _baseApiAddress = $"{Constants.ApiBaseUrl}{Constants.ApiVersion}";
+        private readonly string _baseApiAddress = $"{ApiConstants.ApiBaseUrl}{ApiConstants.ApiVersion}";
 
         private HttpClient HttpClient
         {

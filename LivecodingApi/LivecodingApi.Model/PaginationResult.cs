@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LivecodingApi.Model
 {
-    public class PaginationResult<T>
+    public class PaginationResult<T> : IPagination
     {
         [JsonProperty("count")]
         public int Count { get; set; }
@@ -25,10 +25,11 @@ namespace LivecodingApi.Model
 
         public bool HasNextPage { get { return !string.IsNullOrWhiteSpace(NextUrl); } }
 
-        public int CurrentPage { get; set; }
-
-        public int ItemsPerPage { get; set; }
-
         public int TotalPages { get { return (Count + ItemsPerPage - 1) / ItemsPerPage; } }
+
+        public int Page { get; set; }
+        public int ItemsPerPage { get; set; }
+        public string Search { get; set; }
+        public string Ordering { get; set; }
     }
 }

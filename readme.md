@@ -1,5 +1,6 @@
 # Livecoding API (PCL)
 
+[![Join the chat at https://gitter.im/uwp-squad/livecoding-api-pcl](https://badges.gitter.im/uwp-squad/livecoding-api-pcl.svg)](https://gitter.im/uwp-squad/livecoding-api-pcl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build status](https://ci.appveyor.com/api/projects/status/4vkocg0u74gep51u?svg=true)](https://ci.appveyor.com/project/Odonno/livecoding-api-pcl)
 
 A .NET library to access the livecoding.tv API

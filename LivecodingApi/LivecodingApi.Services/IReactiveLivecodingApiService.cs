@@ -14,7 +14,7 @@ namespace LivecodingApi.Services
         /// <summary>
         /// Token used by the Livecoding API to provide access to the entire API
         /// </summary>
-        string Token { get; }
+        string Token { get; set; }
 
         #endregion
 

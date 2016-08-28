@@ -19,7 +19,11 @@ namespace LivecodingApi.Services
 
         #region Properties
 
-        public string Token { get { return _apiService.Token; } }
+        public string Token
+        {
+            get { return _apiService.Token; }
+            set { _apiService.Token = value; }
+        }
 
         #endregion
 
@@ -29,7 +33,7 @@ namespace LivecodingApi.Services
 
         public ReactiveLivecodingApiService(string token)
         {
-            _apiService.Token = token;
+            Token = token;
         }
 
         #endregion

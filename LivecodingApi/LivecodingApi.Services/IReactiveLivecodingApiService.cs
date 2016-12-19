@@ -195,5 +195,17 @@ namespace LivecodingApi.Services
         IObservable<IEnumerable<Video>> GetUserLatestVideos();
 
         #endregion
+
+        #region Stats
+
+        /// <summary>
+        /// Returns livestream stats based on the username owner
+        /// (Authentication is not required)
+        /// </summary>
+        /// <param name="username">Username of the owner of the livestream</param>
+        /// <returns></returns>
+        IObservable<LiveStreamStats> GetLivestreamStats(string username);
+
+        #endregion
     }
 }

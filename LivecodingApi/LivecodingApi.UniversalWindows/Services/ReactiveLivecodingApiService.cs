@@ -169,5 +169,14 @@ namespace LivecodingApi.Services
         }
 
         #endregion
+
+        #region Stats
+
+        public IObservable<LiveStreamStats> GetLivestreamStats(string username)
+        {
+            return _apiService.GetLivestreamStatsAsync(username).ToObservable();
+        }
+
+        #endregion
     }
 }

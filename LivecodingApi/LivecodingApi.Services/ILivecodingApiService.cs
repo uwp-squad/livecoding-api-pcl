@@ -195,5 +195,17 @@ namespace LivecodingApi.Services
         Task<IEnumerable<Video>> GetUserLatestVideosAsync();
 
         #endregion
+
+        #region Stats
+
+        /// <summary>
+        /// Returns livestream stats based on the username owner
+        /// (Authentication is not required)
+        /// </summary>
+        /// <param name="username">Username of the owner of the livestream</param>
+        /// <returns></returns>
+        Task<LiveStreamStats> GetLivestreamStatsAsync(string username);
+
+        #endregion
     }
 }

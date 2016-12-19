@@ -40,6 +40,7 @@
     <Compile Include="IPagination.cs" />
     <Compile Include="LiveStream.cs" />
     <Compile Include="LiveStreamPrivate.cs" />
+    <Compile Include="LiveStreamStats.cs" />
     <Compile Include="OrderingField.cs" />
     <Compile Include="PaginationRequest.cs" />
     <Compile Include="PaginationResult.cs" />

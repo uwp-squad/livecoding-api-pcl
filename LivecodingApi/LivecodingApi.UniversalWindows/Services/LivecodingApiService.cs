@@ -264,5 +264,15 @@ namespace LivecodingApi.Services
         }
 
         #endregion
+
+        #region Stats
+
+        public async Task<LiveStreamStats> GetLivestreamStatsAsync(string username)
+        {
+            string url = ApiConstants.WebsiteBaseUrl + $"livestreams/{username}/stats.json";
+            return await HttpClient.GetAsync<LiveStreamStats>(url);
+        }
+
+        #endregion
     }
 }

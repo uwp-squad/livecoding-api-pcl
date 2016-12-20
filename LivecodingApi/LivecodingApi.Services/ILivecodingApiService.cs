@@ -196,6 +196,18 @@ namespace LivecodingApi.Services
 
         #endregion
 
+        #region Users
+
+        /// <summary>
+        /// Returns user information
+        /// (https://www.livecoding.tv/developer/documentation/#!/user/Account_User_list)
+        /// </summary>
+        /// <param name="userSlug">Username slug</param>
+        /// <returns></returns>
+        Task<User> GetUserBySlugAsync(string userSlug);
+
+        #endregion
+
         #region Stats
 
         /// <summary>

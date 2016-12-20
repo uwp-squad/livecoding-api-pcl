@@ -265,6 +265,16 @@ namespace LivecodingApi.Services
 
         #endregion
 
+        #region Users
+
+        public async Task<User> GetUserBySlugAsync(string userSlug)
+        {
+            string url = _baseApiAddress + $"users/{userSlug}/";
+            return await HttpClient.GetAsync<User>(url);
+        }
+
+        #endregion
+
         #region Stats
 
         public async Task<LiveStreamStats> GetLivestreamStatsAsync(string username)

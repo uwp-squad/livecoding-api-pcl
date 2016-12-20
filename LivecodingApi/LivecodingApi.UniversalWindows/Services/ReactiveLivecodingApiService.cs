@@ -170,6 +170,15 @@ namespace LivecodingApi.Services
 
         #endregion
 
+        #region Users
+
+        public IObservable<User> GetUserBySlug(string userSlug)
+        {
+            return _apiService.GetUserBySlugAsync(userSlug).ToObservable();
+        }
+
+        #endregion
+
         #region Stats
 
         public IObservable<LiveStreamStats> GetLivestreamStats(string username)

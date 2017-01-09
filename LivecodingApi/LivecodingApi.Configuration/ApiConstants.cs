@@ -9,17 +9,17 @@ namespace LivecodingApi.Configuration
     public class ApiConstants
     {
         /// <summary>
-        /// Base URL of the livecoding website
+        /// Base URL of the livecoding/liveedu website
         /// </summary>
-        public static string WebsiteBaseUrl = "https://www.livecoding.tv/";
+        public static string WebsiteBaseUrl = "https://www.liveedu.tv/";
 
         /// <summary>
-        /// Base URL of the livecoding API
+        /// Base URL of the livecoding/liveedu API
         /// </summary>
-        public static string ApiBaseUrl = "https://www.livecoding.tv:443/api/";
+        public static string ApiBaseUrl = "https://www.liveedu.tv:443/api/";
 
         /// <summary>
-        /// Version of the current livecoding API
+        /// Version of the current livecoding/liveedu API
         /// </summary>
         public static string ApiVersion = "v1/";
     }

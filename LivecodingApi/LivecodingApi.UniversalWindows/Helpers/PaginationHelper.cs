@@ -64,7 +64,7 @@ namespace LivecodingApi.Helpers
             return task.ContinueWith(t =>
             {
                 if (t.Exception != null)
-                    return null;
+                    throw t.Exception.InnerException;
 
                 return t.Result.FillWithPaginationRequest(request);
             });
